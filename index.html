@@ -116,6 +116,20 @@
 
 <script>
     const socket = io();
+    document.addEventListener('DOMContentLoaded', (event) => {
+            const socket = io();
+
+            // Event listener for button click
+            document.getElementById('startMealButton').onclick = function() {
+                const classId = document.getElementById('classIdInput').value;
+                startMeal(classId);
+            };
+
+            document.getElementById('cancelMealButton').onclick = function() {
+                const classId = document.getElementById('classIdInput').value;
+                cancelMeal(classId);
+            };
+        })
 
     function startMeal(classId) {
         socket.emit('startMeal', classId);
