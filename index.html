@@ -115,21 +115,12 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-    
+    const socket = io();
     document.addEventListener('DOMContentLoaded', (event) => {
             const socket = io();
 
             // Event listener for button click
-            document.getElementById('startMealButton').onclick = function() {
-                const classId = document.getElementById('classIdInput').value;
-                startMeal(classId);
-            };
-
-            document.getElementById('cancelMealButton').onclick = function() {
-                const classId = document.getElementById('classIdInput').value;
-                cancelMeal(classId);
-            };
-        })
+    })
 
     function startMeal(classId) {
         socket.emit('startMeal', classId);
@@ -152,12 +143,12 @@
 
     window.onload = () => {
         // 페이지 로드 시 Local Storage에서 시간 복원
-        [...Array(11).keys()].forEach(classId => {
-            const savedTime = localStorage.getItem(`classTime${classId + 1}`);
+        for (let classId = 1; classId <= 11; classId++) {
+            const savedTime = localStorage.getItem(`Time${classId}`);
             if (savedTime) {
-                document.getElementById(`time${classId + 1}`).textContent = savedTime;
+                document.getElementById(`time${classId}`).textContent = savedTime;
             }
-        });
+        }
     };
 </script>
 
