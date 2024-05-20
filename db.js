@@ -10,13 +10,7 @@ const pool = mariadb.createPool({
     database: 'database' // 사용할 데이터베이스 이름
 });
 
-connection.connect((err) => {
-    if (err) {
-        console.error('Could not connect to database', err);
-    } else {
-        console.log('Connected to database');
-    }
-});
+
 
 // 테이블 생성
 (async () => {
@@ -28,7 +22,7 @@ connection.connect((err) => {
     `;
 
     try {
-        const connection = await pool.getConnection();
+        const connection = await db.getConnection();
         await connection.query(createTableQuery);
         console.log('Table created or already exists');
         connection.release(); // 연결 반환
