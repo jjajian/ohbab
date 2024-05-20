@@ -12,8 +12,7 @@ const db = require('./db');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-const helmet = require('helmet');
-app.use(helmet());
+
 const cors = require('cors');
 app.use(cors()); // 모든 도메인에서의 요청을 허용
 
