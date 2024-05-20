@@ -6,7 +6,7 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const db = require('./db');
-require('dotenv').config(); // dotenv 패키지를 사용하여 환경 변수 로드
+
 
 
 const app = express();
