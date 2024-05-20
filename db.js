@@ -3,10 +3,10 @@ const mariadb = require('mysql');
 
 // 데이터베이스 연결
 const connection = mariadb.createConnection({
-    host: 'database',   // MySQL 서버 호스트
+    host: 'mariadb',   // MySQL 서버 호스트
     port: 3306,
     user: 'root',
-    password: '0219', // MySQL 비밀번호
+    rootpassword: '0219', // MySQL 비밀번호
     database: 'database' // 사용할 데이터베이스 이름
 });
 
