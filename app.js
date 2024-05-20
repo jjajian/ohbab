@@ -7,7 +7,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 const db = require('./db');
 require('dotenv').config(); // dotenv 패키지를 사용하여 환경 변수 로드
-const PORT = process.env.PORT || 3000; // 환경 변수에서 포트 번호 가져오기, 없으면 3000 사용
+
 
 const app = express();
 const server = http.createServer(app);
@@ -57,5 +57,5 @@ io.on('connection', (socket) => {
 });
 
 server.listen(3000, () => {
-    console.log('Listening on *:${PORT}');
+    console.log('Listening on *:3000');
 });
