@@ -3,9 +3,6 @@ const http = require('http');
 const socketIo = require('socket.io');
 const db = require('./db');
 const cors = require('cors');
-const { format } = require('date-fns');
-const { utcToZonedTime } = require('date-fns-tz');
-
 
 const app = express();
 const server = http.createServer(app);
@@ -19,11 +16,7 @@ io.on('connection', (socket) => {
 
     // 클래스 출발 시간 설정
     socket.on('startMeal', (classId) => {
-        const now = new Date();
-        const timeZone = 'Asia/Seoul';
-        const zonedTime = utcToZonedTime(now, timeZone);
-        const currentTime = format(zonedTime, 'HH:mm:ss', { timeZone });
-        
+        const currentTime = new Date().toLocaleTimeString();
         db.getConnection((err, connection) => {
             if (err) {
                 return console.error('Database connection failed: ', err);
@@ -62,3 +55,4 @@ io.on('connection', (socket) => {
 server.listen(3000, () => {
     console.log('Listening on *:3000');
 });
+//아니 시간이 이상하게 표시되는데?  00시가 아니라 3시, 2시가 아니라 5시 이런식이야
